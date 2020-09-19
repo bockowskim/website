@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michał Boćkowski - junior web developer - front end</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+        integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+
+
+    <style>
+        @import compass;
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap');
+
+        /* font-family: 'Roboto', sans-serif; */
+        :root {
+            --border-size: 0.125rem;
+            --duration: 250ms;
+            --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+            --font-family: monospace;
+            --color-primary: white;
+            --color-secondary: black;
+            --color-tertiary: dodgerblue;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --space: 1rem;
+            --footerheight: 180px;
+
+        }
+
+        html {
+            --basiccolor: #06163A;
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Roboto, Arial, sans-serif;
+        }
+
+        body {
+            max-width: 1600px;
+            /* height: 200vh; */
+            position: relative;
+            margin: 0px auto;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+            gap: 12px 1px;
+            grid-template-areas:
+                "side-about about about"
+                "portfolio portfolio side-portfolio"
+                "side-skills skills skills"
+                "hobby hobby side-hobby"
+                "footer footer footer";
+            margin: 0 auto;
+            padding: 10px 15px;
+            text-align: justify;
+            /* box-sizing: border-box; */
+            overflow: visible;
+            min-height: 40vh;
+            position: relative;
+
+        }
+
+        .footer {
+            position: absolute;
+            bottom: -100px;
+            width: 100%;
+            background-color: lightcyan;
+            height: 100px;
+            text-align: center;
+            padding: 5px;
+        }
+
+        h2 {
+            letter-spacing: 5px;
+            font-size: 50px;
+            text-align: center;
+            line-height: 100px;
+            min-height: 40vh;
+        }
+
+        .side-about {
+            grid-area: side-about;
+
+        }
+
+        .about {
+            grid-area: about;
+        }
+
+        .portfolio {
+            grid-area: portfolio;
+        }
+
+        .side-portfolio {
+            grid-area: side-portfolio;
+        }
+
+        .side-skills {
+            grid-area: side-skills;
+        }
+
+        .skills {
+            grid-area: skills;
+        }
+
+        .side-hobby {
+            grid-area: side-hobby;
+        }
+
+        .hobby {
+            grid-area: hobby;
+        }
+
+        .fas {
+            padding: 0;
+            margin: 0;
+            display: inline-block;
+            /* animation:  1s 1; */
+        }
+
+        nav.topmenu p {
+            display: inline-block;
+        }
+
+
+        @media (max-width: 640px) {
+            body {
+                position: relative;
+            }
+
+            .grid-container {
+                margin-top: 100px;
+                ;
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+                gap: 12px 1px;
+                grid-template-areas:
+                    "side-about"
+                    "about"
+
+                    "side-portfolio"
+                    "portfolio"
+
+                    "side-skills"
+                    "skills"
+
+                    "side-hobby"
+                    "hobby";
+                /* position: relative; */
+
+            }
+
+            .grid-container~div {
+                max-height: 100vh;
+            }
+
+            header .line-1 {
+                font-size: 1.5em;
+                text-shadow: 0 0 5px rgba(0, 0, 0, 0.5)
+            }
+
+            .grid-container h2 {
+                /* margin-bottom: -16px; */
+                font-size: 60px;
+                letter-spacing: 5px;
+            }
+
+
+            .social .fab {
+                font-size: 20px;
+                margin-right: 10px;
+                line-height: 60px;
+                width: 60px;
+                opacity: 1;
+                transition: 0.5s;
+                background-color: #4C6582;
+                border-radius: 50%;
+                transition: 0.5s;
+                cursor: pointer;
+
+
+
+
+            }
+
+            ul {
+
+                display: flex;
+                flex-direction: column;
+            }
+
+            ul img {
+                display: none;
+            }
+
+            nav.topmenu p {
+                display: none;
+            }
+
+
+
+
+        }
+
+
+
+
+
+        }
+
+        @media (min-width: 641px) and (max-width: 1024px) {
+            body {
+                position: relative;
+            }
+
+            header .line-1 {
+                font-size: 3em;
+                text-shadow: 0 0 5px rgba(0, 0, 0, 0.5)
+            }
+
+            nav.topmenu {
+                position: fixed;
+                z-index: 1;
+                background-color: #fff;
+                opacity: 0.9;
+            }
+
+            nav.topmenu a {
+                font-size: 2em;
+            }
+
+            i.fas {
+                display: none;
+
+            }
+
+            header div {
+                position: absolute;
+                top: 120px;
+                height: 50px;
+                animation: start 1s linear;
+                overflow: hidden;
+            }
+
+
+        }
+
+        @media (min-width: 1025px) {}
+
+
+
+        nav.topmenu {
+            width: 100%;
+            /* background-color: #ddd; */
+            /* position: fixed; */
+        }
+
+        .topmenu a:hover {
+            border-bottom: 3px solid royalblue;
+        }
+
+        ul {
+            display: flex;
+            list-style: none;
+            text-align: center;
+            line-height: 100px;
+
+        }
+
+        li {
+            flex-basis: 25%;
+            animation: start 1s 1;
+            transition: 0.5s;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 2em;
+            color: var(--basiccolor);
+            font-weight: 700;
+
+
+        }
+
+        /* h1 {
+            display: none;
+        } */
+
+        li:hover {
+            background-color: var(--basiccolor);
+            opacity: 0.5;
+            color: whitesmoke;
+            cursor: pointer;
+            animation: hover 1s 1 both;
+
+
+        }
+
+        li:hover a {
+            color: white;
+            animation: hover 1s 1;
+
+        }
+
+        ul img {
+            max-width: 100px;
+            color: white;
+            animation: start 1s 1 both;
+        }
+
+        ul img:hover {
+            opacity: 0.7;
+
+        }
+
+        li:nth-last-child(1) {
+            border: 3px solid var(--basiccolor);
+            letter-spacing: 5px;
+        }
+
+
+        @keyframes iconmove {
+            0% {
+                transform: scale(0);
+            }
+
+            50% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes start {
+            0% {
+                transform: scale(0);
+            }
+
+            50% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        header div {
+            position: relative;
+            height: 400px;
+            margin-top: 10px;
+            background-image: url(slider2.jpg);
+            background-repeat: no-repeat;
+            background-position: bottom;
+            background-size: cover;
+            background-attachment: fixed;
+            animation: start 1s 1 both;
+        }
+
+        header h1 {
+            font-size: 50px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            overflow: hidden;
+            animation:
+        }
+
+
+
+        @keyframes slider {
+            0% {
+                transform: translate(100%, -50%);
+            }
+
+            3% {
+                transform: translate(100%, -50%);
+            }
+
+            6% {
+                transform: translate(0, -50%);
+            }
+
+            30% {
+                transform: translate(0, -50%);
+            }
+
+            33% {
+                transform: translate(-100%, -50%);
+            }
+
+            100% {
+                transform: translate(-100%, -50%);
+            }
+        }
+
+        .line-1 {
+            position: relative;
+            top: -50%;
+            width: 24em;
+            margin: 0 auto;
+            border-right: 2px solid rgba(255, 255, 255, .75);
+            font-size: 4em;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            color: whitesmoke;
+            /* transform: translateY(-50%); */
+        }
+
+        /* header h1 {
+            position: absolute;
+            top: 100px;
+            left: 320px;
+        } */
+
+        /* Animation */
+        .anim-typewriter {
+            animation: typewriter 4s steps(40) 1s 1 normal both,
+                blinkTextCursor 400ms steps(30) 1 backwards;
+        }
+
+        @keyframes typewriter {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 12em;
+
+            }
+        }
+
+        @keyframes blinkTextCursor {
+            from {
+                border-right-color: rgba(255, 255, 255, .75);
+                /* opacity: 0; */
+            }
+
+            to {
+                border-right-color: transparent;
+
+            }
+        }
+
+
+
+        footer .fab {
+            font-size: 30px;
+            padding-left: 15px;
+            margin-top: 10px;
+            background: -webkit-linear-gradient(#444444, #333);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        section.social {
+            /* background-color: var(--basiccolor); */
+            height: 150px;
+            text-align: center;
+            /* position: relative; */
+            vertical-align: middle;
+            line-height: 150px;
+            padding: 0 50px;
+            color: white;
+            top: 70%;
+            right: 3%;
+            position: absolute;
+        }
+
+        .social .fab {
+            font-size: 30px;
+            margin-right: 10px;
+            line-height: 45px;
+            width: 45px;
+            opacity: 0.3;
+            transition: 0.5s;
+            background-color: #4C6582;
+            border-radius: 50%;
+            transition: 0.5s;
+            cursor: pointer;
+
+
+
+
+        }
+
+        footer .social .fab {
+            font-size: 45px;
+            margin-right: 10px;
+            line-height: 60px;
+            width: 60px;
+            opacity: 0.3;
+            transition: 0.5s;
+            background-color: #4C6582;
+            border-radius: 50%;
+            transition: 0.5s;
+            cursor: pointer;
+        }
+
+        .social .fab:hover {
+            opacity: 0.9;
+        }
+
+        .social .fa-git {
+            background-color: black;
+        }
+
+        .social .fa-git {
+            background-color: black;
+        }
+
+
+
+        /* .social:hover .fab {
+            /* color: whitesmoke; */
+        /* cursor: pointer;
+        animation: socialicon .5s 1 normal;
+        } */
+
+        */ @keyframes socialicon {
+            0% {
+                transform: scale(0);
+            }
+
+            50% {
+                transform: scale(0);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .show {
+            font-size: 25px;
+            /* border: 2px; */
+            border-color: var(--basiccolor);
+            border-radius: 10px;
+            padding: 10px;
+            background-color: #4C6582;
+            color: white;
+            /* width: 80%; */
+            margin: 0 auto;
+            position: absolute;
+            bottom: 150px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-transform: uppercase;
+            /* animation: button 1s ease 3; */
+
+        }
+
+        .social .fa-instagram {
+            color: white;
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+        }
+
+        .social .fa-facebook-f {
+            background-color: #2b4170;
+            /* fallback color */
+            background: -moz-linear-gradient(top, #3b5998, #2b4170);
+            background: -ms-linear-gradient(top, #3b5998, #2b4170);
+            background: -webkit-linear-gradient(top, #3b5998, #2b4170);
+            border: 1px solid #2b4170;
+            text-shadow: 0 -1px -1px #1f2f52;
+        }
+
+        .social .fa-linkedin-in {
+            background-color: #0077B5;
+        }
+
+        /* .show:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes button {
+            0% {}
+
+            ;
+
+            15% {
+                transform: rotate(5deg);
+
+            }
+
+            30% {
+                transform: rotate(0);
+            }
+
+            60% {
+                transform: rotate(-5deg);
+            }
+
+            100% {
+                transform: rotate(0);
+            }
+
+            ;
+        } */
+
+        .square {
+            height: 100px;
+            width: 100px;
+            background-color: black;
+        }
+
+        #show {
+            text-align: center;
+            margin: 0 auto;
+            letter-spacing: 5px;
+            padding-top: 30px;
+            padding-bottom: 20px;
+            font-size: 35px;
+            background: -webkit-linear-gradient(#444444, #333);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            border-bottom: solid 2px rgba(0, 0, 0, 0.1);
+            /* border: solid 1px; */
+        }
+
+        #show:hover {
+            cursor: pointer;
+        }
+
+        .fab:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="topmenu" id="navbar">
+        <ul>
+            <img src="logo.svg" alt="">
+            <li><a href="#top"><i class="fas fa-home"></i>
+                    <p>.home</p>
+                </a></li>
+            <li><a href="#about"><i class="fas fa-user-circle"></i>
+                    <p>.about</p>
+                </a></li>
+            <li><a href="#show"><i class="fas fa-photo-video"></i>
+                    <p>.portfolio</p>
+                </a></li>
+            <li><a href="#bottomfooter"><i class="fas fa-envelope"></i>
+                    <p>.contact</p>
+
+                </a></li>
+        </ul>
+    </nav>
+    <header>
+        <div>
+            <div class="banerimage"></div>
+            <!-- <h1>hello! I'm Michał Boćkowski</h1> -->
+            <p class="line-1 anim-typewriter"> ... welcome on my website</p>
+            <section class="social">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-git"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-linkedin-in"></i>
+            </section>
+        </div>
+
+    </header>
+    <div id="show">ABOUT ME <i>"SHOW/HIDE"</i></div>
+    <div class="grid-container">
+        <div class="side-about">
+            <h2><span>{'about'}</span></h2>
+        </div>
+        <div class="about">
+            <p>My name is Michał Boćkowski. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam ad quo
+                rerum quod provident repellat eius cumque, atque soluta, consequatur tempore! Dolore dicta ullam unde
+                est incidunt. Dolores odio illo ut hic nostrum non est laborum ducimus a tempora laudantium veritatis
+                unde voluptatibus enim, vero nihil! Velit repellat architecto optio delectus necessitatibus voluptatem
+                ut? Consequatur dolorum eligendi repellendus ipsam similique beatae amet? Error possimus commodi animi
+                molestiae doloremque totam aperiam magnam consequuntur, sapiente, eius ipsam cupiditate eum molestias
+                iure ea velit asperiores cumque alias dolore in ducimus non natus? Et voluptatem sapiente facilis vitae
+                tempora repudiandae eius eligendi quasi non!</p>
+        </div>
+        <div class="portfolio">
+            <p>tutaj portfolio Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae deserunt dolore quae,
+                porro repudiandae nulla exercitationem unde explicabo nisi et excepturi veritatis. Incidunt recusandae
+                magni, sed reiciendis molestiae aperiam consequuntur ullam aliquam modi esse maiores quasi provident ad
+                commodi veniam vitae accusantium aspernatur inventore pariatur ex qui, nihil ducimus! Placeat quibusdam
+                perspiciatis molestiae id veritatis voluptatem repudiandae omnis atque vero nisi blanditiis accusantium
+                corrupti ducimus corporis, necessitatibus qui earum doloribus! Nostrum repudiandae quia corrupti dolor?
+                Ullam, culpa dolorum dolor quidem molestias eligendi molestiae minima accusamus, obcaecati qui magnam
+                eveniet, amet ipsum magni unde consequatur non harum eius delectus consectetur libero.</p>
+        </div>
+        <div class="side-portfolio">
+            <h2><span>'portfolio'</span></portfolio>
+            </h2>
+        </div>
+        <div class="side-skills">
+            <h2><span>'skills'</span></h2>
+        </div>
+        <div class="skills">tutaj skillsy Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum amet
+            perferendis magnam iure natus eveniet ratione fugiat quaerat ad odit molestiae eius sapiente modi, vel nobis
+            assumenda, ex tempore. Debitis velit dignissimos magnam excepturi perspiciatis laudantium iste dolorum in
+            maxime esse! Cum dolorem culpa ad modi, distinctio maiores amet tempore dolorum maxime! Veritatis numquam
+            quos repudiandae neque, odit omnis possimus at provident cum placeat libero laboriosam voluptas enim, sint
+            ex quia error commodi, nemo atque! Asperiores laboriosam alias eius reprehenderit nulla blanditiis nesciunt,
+            sit rerum exercitationem eveniet dicta dolorum odio cum illo saepe eaque praesentium. Esse laboriosam
+            temporibus maxime odio!</div>
+        <div class="side-hobby">
+            <h2><span>'hobby'</span></h2>
+        </div>
+        <div class="hobby">tutaj hobby Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus ipsum
+            temporibus repellendus inventore quod neque ratione libero maxime rem autem magnam suscipit quos adipisci
+            pariatur exercitationem sequi aliquid iure repellat cum laboriosam assumenda, tenetur fuga! Facilis
+            voluptatem libero vitae corrupti quisquam culpa amet? Sint possimus tenetur consectetur quasi expedita
+            blanditiis provident perspiciatis recusandae, assumenda deserunt dolore iusto hic commodi quod sit atque
+            explicabo qui fugit unde nam similique culpa aperiam. Illo eum velit culpa obcaecati est animi nemo
+            laboriosam! Error, corrupti sint repellendus placeat magni saepe laboriosam, laborum perferendis officiis
+            iure possimus obcaecati cupiditate rem officia ea, tempore commodi optio.</div>
+        <div class="footer" id="bottomfooter">
+            <p>copyright: Michał Boćkowski</p>
+            <p>tel: + 48 504 707 476</p>
+            <p>mail: bockowski.m@gmail.com</p>
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-git"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-linkedin-in"></i>
+        </div>
+    </div>
+
+    </div>
+
+    <!-- <button class="show">Show my portfolio</button> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Add smooth scrolling to all links
+            $("a").on('click', function (event) {
+
+                // Make sure this.hash has a value before overriding default behavior
+                if (this.hash !== "") {
+                    // Prevent default anchor click behavior
+                    event.preventDefault();
+
+                    // Store hash
+                    var hash = this.hash;
+
+                    // Using jQuery's animate() method to add smooth page scroll
+                    // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 200, function () {
+
+                        // Add hash (#) to URL when done scrolling (default click behavior)
+                        window.location.hash = hash;
+                    });
+                } // End if
+            });
+        });
+
+
+        // const btnJS = document.querySelector('.show');
+
+        // const divItem = document.createElement('div');
+        // divItem.className = "square";
+        // // document.body.appendChild(divItem);
+
+        // // btnJS.addEventListener('click', function () {
+        // //     const divItem = document.createElement('div');
+        // //     divItem.className = "square";
+        // //     document.body.appendChild(divItem);
+
+        // // })
+
+        $(document).ready(function () {
+            $('#show').click(function () {
+                $('.technologies').slideToggle("slow");
+            });
+        });
+        var prevScrollpos = window.pageYOffset;
+        window.onscroll = function () {
+            var currentScrollPos = window.pageYOffset;
+            if (prevScrollpos > currentScrollPos) {
+                document.getElementById("navbar").style.top = "0";
+            } else {
+                document.getElementById("navbar").style.top = "-120px";
+            }
+            prevScrollpos = currentScrollPos;
+        }
+
+
+        $(document).scroll(function () {
+            var y = $(this).scrollTop();
+            if (y > 500) {
+                $('.about').fadeIn(1000);
+            } else {
+                $('.about').fadeOut(1000);
+            }
+        });
+        $(document).scroll(function () {
+            var y = $(this).scrollTop();
+            if (y > 650) {
+                $('.portfolio').fadeIn(1000);
+            } else {
+                $('.portfolio').fadeOut(1000);
+            }
+        });
+        $(document).scroll(function () {
+            var y = $(this).scrollTop();
+            if (y > 800) {
+                $('.skills').fadeIn(1000);
+            } else {
+                $('.skills').fadeOut(1000);
+            }
+        });
+        $(document).scroll(function () {
+            var y = $(this).scrollTop();
+            if (y > 950) {
+                $('.hobby').fadeIn(1000);
+            } else {
+                $('.hobby').fadeOut(1000);
+            }
+        });
+        $(document).scroll(function () {
+            var y = $(this).scrollTop();
+            if (y > 1150) {
+                $('.footer').fadeIn(1150);
+            } else {
+                $('.footer').fadeOut(1150);
+            }
+        });
+    </script>
+</body>
+
+</html>
