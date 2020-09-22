@@ -45,67 +45,6 @@
             position: relative;
             margin: 0px auto;
         }
-        .topnav {
-            overflow: hidden;
-            background-color: #757575;
-            text-align: ;
-
-        }
-
-        .topnav a {
-            float: left;
-            display: block;
-            color: whitesmoke;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-size: 24px;
-            letter-spacing: 3px;
-        }
-
-        .topnav a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-
-        .topnav a.active {
-            background-color: #4E4E4E;
-            color: white;
-        }
-
-        .topnav .icon {
-            display: none;
-        }
-
-        @media screen and (max-width: 600px) {
-            .topnav a:not(:first-child) {
-                display: none;
-            }
-
-            .topnav a.icon {
-                float: right;
-                display: block;
-            }
-        }
-
-        @media screen and (max-width: 600px) {
-            .topnav.responsive {
-                position: relative;
-            }
-
-            .topnav.responsive .icon {
-                position: absolute;
-                right: 0;
-                top: 0;
-            }
-
-            .topnav.responsive a {
-                float: none;
-                display: block;
-                text-align: left;
-            }
-        }
-
 
         .grid-container {
             display: grid;
@@ -186,6 +125,95 @@
             /* animation:  1s 1; */
         }
 
+        .topnav {
+            overflow: hidden;
+            background-color: #757575;
+            position: fixed;
+            z-index: 1;
+            opacity: 0.8;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60vw;
+            border-bottom-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+
+        }
+
+        .topnav a {
+            float: left;
+
+            display: block;
+            color: whitesmoke;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 24px;
+            letter-spacing: 3px;
+            transition: 0.5s;
+        }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+
+        }
+
+        .topnav a.active {
+            background-color: #4E4E4E;
+            color: white;
+        }
+
+        .topnav .icon {
+            display: none;
+
+        }
+
+        @media screen and (max-width: 900px) {
+            .topnav a:not(:first-child) {
+                display: none;
+
+            }
+
+            .topnav a.icon {
+                float: right;
+                display: block;
+            }
+        }
+
+        @media screen and (max-width: 900px) {
+            .topnav.responsive {
+
+                position: fixed;
+            }
+
+            .topnav.responsive .icon {
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+
+            .topnav.responsive a {
+                float: none;
+                display: block;
+                text-align: left;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         nav.topmenu p {
             display: inline-block;
         }
@@ -195,6 +223,11 @@
             body {
                 position: relative;
             }
+
+            header {
+                background-position: right;
+            }
+
 
             .grid-container {
                 margin-top: 100px;
@@ -421,7 +454,7 @@
             margin-top: 10px;
             background-image: url(slider2.jpg);
             background-repeat: no-repeat;
-            background-position: bottom;
+            background-position: center;
             background-size: cover;
             background-attachment: fixed;
             animation: start 1s 1 both;
@@ -702,7 +735,7 @@
 </head>
 
 <body>
-      <div class="topnav" id="myTopnav">
+    <div class="topnav" id="myTopnav">
         <a href="#home" class="active">.home</a>
         <a href="#news">.portfolio</a>
         <a href="#contact">.about</a>
@@ -889,13 +922,16 @@
                 $('.footer').fadeOut(1150);
             }
         });
-            function myFunction() {
+
+
+        function myFunction() {
             var x = document.getElementById("myTopnav");
             if (x.className === "topnav") {
                 x.className += " responsive";
             } else {
                 x.className = "topnav";
             }
+            document.getElementById("myTopNav").style.transition = "all 2s"
         }
     </script>
 </body>
