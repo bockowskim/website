@@ -224,8 +224,13 @@
                 position: relative;
             }
 
-            header {
-                background-position: right;
+            header div .banerimage {
+                max-width: 640px;
+                background-attachment: fixed;
+                background-position: 100%;
+                /* background-size: cover; */
+                background-repeat: no-repeat;
+                /* border-bottom-left-radius: 150px; */
             }
 
 
@@ -454,10 +459,12 @@
             margin-top: 10px;
             background-image: url(slider2.jpg);
             background-repeat: no-repeat;
-            background-position: center;
+            background-position: bottom;
             background-size: cover;
             background-attachment: fixed;
             animation: start 1s 1 both;
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
         }
 
         header h1 {
